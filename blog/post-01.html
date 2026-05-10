@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why I build processors from scratch — Woojin</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<!-- Nav injected by nav.js -->
+
+<main class="page-content">
+  <div class="container">
+
+    <!-- ── POST HEADER ── -->
+    <div class="post-header">
+      <a class="back" href="/blog.html">← Back to Blog</a>
+      <div class="post-meta">
+        <span class="tag">Engineering</span>
+        <span class="entry-date">May 2025</span>
+      </div>
+      <h1>Why I build processors from scratch</h1>
+      <p class="lead">
+        There's a particular satisfaction in watching a hand-written register file pass simulation.
+        Here's why building at the lowest level makes you a better engineer everywhere else.
+      </p>
+    </div>
+
+    <!-- ── COVER ── -->
+    <div class="post-cover">
+      <!-- <img src="/assets/blog/post-01-cover.jpg" alt="" /> -->
+      Cover image
+    </div>
+
+    <!-- ── CONTENT ── -->
+    <div class="post-layout">
+      <article class="post-content">
+
+        <p>
+          When I tell people I'm implementing a RISC-V processor in Verilog for fun — not for a class,
+          just because — they usually raise an eyebrow. "Isn't that what compilers and simulators are for?"
+        </p>
+        <p>
+          Sure. But there's something irreplaceable about writing the thing yourself.
+        </p>
+
+        <h2>The abstraction gap</h2>
+        <p>
+          Modern software engineering is all about abstractions. Frameworks hide databases,
+          databases hide filesystems, filesystems hide disk controllers. Most of the time,
+          that's great — it lets you move fast. But abstractions have a cost: you stop
+          understanding what's actually happening.
+        </p>
+        <p>
+          Building a processor forces you to close the abstraction gap. When you write
+          <code>lw x5, 0(x10)</code> and trace what actually happens — the fetch, decode,
+          address calculation, memory read, writeback — you never look at memory access
+          the same way again.
+        </p>
+
+        <h2>Debugging as a skill</h2>
+        <p>
+          Verilog is humbling. A waveform viewer showing five simultaneous pipeline stages,
+          a stale value propagating through a forwarding mux, a hazard you forgot to detect —
+          debugging hardware is a different skill from debugging software.
+        </p>
+        <blockquote>
+          You can't put a print statement in hardware. You have to think before you simulate.
+        </blockquote>
+        <p>
+          That discipline — thinking through state transitions before touching the keyboard —
+          transfers everywhere. I'm slower to write code now. And faster to get it right.
+        </p>
+
+        <h2>The joy of it</h2>
+        <p>
+          Honestly, there's also just something deeply satisfying about it. The moment a
+          simulated processor successfully runs a Fibonacci sequence you wrote in assembly,
+          using a datapath you designed from scratch — that feeling doesn't go away.
+        </p>
+        <p>
+          Build the thing. All the way down.
+        </p>
+
+      </article>
+
+      <aside class="post-sidebar">
+        <div class="sidebar-section">
+          <h4>Published</h4>
+          <p>May 2025</p>
+        </div>
+        <div class="sidebar-section">
+          <h4>Tags</h4>
+          <div style="display:flex;flex-wrap:wrap;gap:0.35rem;">
+            <span class="tag">Engineering</span>
+            <span class="tag">RTL</span>
+            <span class="tag">Learning</span>
+          </div>
+        </div>
+        <div class="sidebar-section">
+          <h4>Related</h4>
+          <a href="/projects/riscv-processor.html">RISC-V RV32I Processor →</a>
+        </div>
+      </aside>
+    </div>
+
+  </div>
+</main>
+
+<script src="/js/nav.js"></script>
+</body>
+</html>

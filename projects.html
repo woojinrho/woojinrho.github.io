@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Woojin</title>
+  <meta name="description" content="Engineering and hardware projects by Woojin." />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<!-- Nav injected by nav.js -->
+
+<main class="page-content">
+  <div class="container">
+
+    <!-- Page Hero -->
+    <div class="page-hero">
+      <p class="eyebrow">// ./projects</p>
+      <h1>Projects</h1>
+      <p>Engineering work spanning digital design, computer architecture, FPGA development, and software. Click any project to read the full write-up.</p>
+    </div>
+
+    <!-- Project List -->
+    <div class="entry-list">
+
+      <!-- Project 1 -->
+      <a class="entry-item" href="/projects/riscv-processor.html">
+        <div class="entry-img">RV32I</div>
+        <div class="entry-body">
+          <div class="entry-meta">
+            <span class="tag">Verilog</span>
+            <span class="tag">RTL</span>
+            <span class="tag">RISC-V</span>
+            <span class="entry-date">2024 – 2025</span>
+          </div>
+          <h2>RISC-V RV32I Processor</h2>
+          <p>
+            A full implementation of the RISC-V RV32I instruction set architecture in Verilog.
+            Phase 1 is a complete single-cycle processor with all base integer instructions.
+            Phase 2 introduces a 5-stage pipeline with hazard detection and forwarding.
+            Phase 3 adds a custom matrix-multiply hardware accelerator coupled via memory-mapped I/O.
+          </p>
+          <div class="entry-tags">
+            <span class="tag">Verilog</span>
+            <span class="tag">RISC-V</span>
+            <span class="tag">Computer Architecture</span>
+            <span class="tag">FPGA</span>
+          </div>
+        </div>
+        <span class="entry-arrow">→</span>
+      </a>
+
+      <!-- Project 2 -->
+      <a class="entry-item" href="/projects/matrix-accelerator.html">
+        <div class="entry-img">MMUL</div>
+        <div class="entry-body">
+          <div class="entry-meta">
+            <span class="tag">SystemVerilog</span>
+            <span class="tag">FPGA</span>
+            <span class="entry-date">2025</span>
+          </div>
+          <h2>Matrix Multiply Accelerator</h2>
+          <p>
+            A custom hardware accelerator for matrix multiplication (Phase 3 of the RISC-V project).
+            Designed to offload matrix operations from the CPU via a memory-mapped interface,
+            exploring the tradeoffs of hardware-software co-design on FPGA.
+          </p>
+          <div class="entry-tags">
+            <span class="tag">SystemVerilog</span>
+            <span class="tag">Hardware Acceleration</span>
+            <span class="tag">MMIO</span>
+          </div>
+        </div>
+        <span class="entry-arrow">→</span>
+      </a>
+
+      <!-- Project 3 — placeholder -->
+      <a class="entry-item" href="/projects/fpga-project.html">
+        <div class="entry-img">FPGA</div>
+        <div class="entry-body">
+          <div class="entry-meta">
+            <span class="tag">VHDL</span>
+            <span class="tag">FPGA</span>
+            <span class="entry-date">2024</span>
+          </div>
+          <h2>FPGA Digital Design Project</h2>
+          <p>
+            Replace this with your actual project description. This placeholder demonstrates the layout —
+            an image on the left, title, tags, and a short description on the right, with a smooth hover
+            effect and click-through to the full blog-format write-up.
+          </p>
+          <div class="entry-tags">
+            <span class="tag">VHDL</span>
+            <span class="tag">Digital Logic</span>
+          </div>
+        </div>
+        <span class="entry-arrow">→</span>
+      </a>
+
+    </div>
+  </div>
+</main>
+
+<script src="/js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RISC-V RV32I Processor — Woojin</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<!-- Nav injected by nav.js -->
+
+<main class="page-content">
+  <div class="container">
+
+    <!-- ── POST HEADER ── -->
+    <div class="post-header">
+      <a class="back" href="/projects.html">← Back to Projects</a>
+      <div class="post-meta">
+        <span class="tag">Verilog</span>
+        <span class="tag">RISC-V</span>
+        <span class="tag">Computer Architecture</span>
+        <span class="entry-date">2024 – 2025</span>
+      </div>
+      <h1>RISC-V RV32I Processor</h1>
+      <p class="lead">
+        A complete implementation of the RISC-V RV32I base integer ISA in Verilog,
+        built as a three-phase portfolio project: single-cycle, pipelined, and hardware-accelerated.
+      </p>
+    </div>
+
+    <!-- ── COVER IMAGE ── -->
+    <div class="post-cover">
+      <!-- <img src="/assets/projects/riscv-cover.png" alt="RISC-V processor block diagram" /> -->
+      Cover image / block diagram
+    </div>
+
+    <!-- ── CONTENT + SIDEBAR ── -->
+    <div class="post-layout">
+
+      <article class="post-content">
+
+        <h2>Overview</h2>
+        <p>
+          The RISC-V RV32I Processor project is a ground-up hardware implementation
+          of the RISC-V base integer instruction set. Rather than following a textbook
+          step-by-step, the goal was to build a production-quality RTL design with
+          clean module boundaries, complete test coverage, and extensibility in mind.
+        </p>
+        <p>
+          The project is split into three phases, each building on the last:
+        </p>
+        <ul>
+          <li><strong>Phase 1</strong> — Single-cycle core (all RV32I base instructions)</li>
+          <li><strong>Phase 2</strong> — 5-stage pipeline with hazard detection and forwarding</li>
+          <li><strong>Phase 3</strong> — Matrix-multiply hardware accelerator via MMIO</li>
+        </ul>
+
+        <h2>Phase 1 — Single-Cycle Core</h2>
+        <p>
+          The single-cycle implementation processes one instruction per clock cycle.
+          All eight modules — the instruction memory, register file, ALU, control unit,
+          immediate generator, data memory, branch comparator, and top-level datapath —
+          were written and verified independently before integration.
+        </p>
+
+        <h3>Module structure</h3>
+        <pre><code>riscv_top.v         // Top-level datapath
+├── imem.v          // Instruction memory (synchronous ROM)
+├── regfile.v       // 32×32-bit register file
+├── alu.v           // Arithmetic/logic unit
+├── control.v       // Opcode decoder / control signals
+├── immgen.v        // Immediate value generator
+├── dmem.v          // Data memory (byte-addressable)
+├── branch_comp.v   // Branch comparator
+└── mux2.v          // Generic 2:1 mux (parameterised width)</code></pre>
+
+        <h3>Key design decisions</h3>
+        <p>
+          The register file uses two asynchronous read ports and one synchronous write port,
+          matching the semantics expected by the RV32I ISA.
+          The ALU supports all required operations: ADD, SUB, AND, OR, XOR, SLT, SLTU, SLL, SRL, SRA.
+        </p>
+        <blockquote>
+          Why implement a branch comparator separately instead of reusing the ALU?
+          Because it allows the comparator to be optimised for equality/signed-less-than checks
+          without polluting the ALU's critical path.
+        </blockquote>
+
+        <h2>Phase 2 — Pipelined Core</h2>
+        <p>
+          The 5-stage pipeline (IF → ID → EX → MEM → WB) introduces hazards that require
+          both detection logic and forwarding paths. Three categories of hazards are handled:
+        </p>
+        <ul>
+          <li><strong>Data hazards</strong> — forwarding from EX/MEM and MEM/WB stages</li>
+          <li><strong>Load-use hazards</strong> — one-cycle stall inserted by the hazard unit</li>
+          <li><strong>Control hazards</strong> — branch resolved in MEM, two-cycle flush on taken branch</li>
+        </ul>
+
+        <h2>Phase 3 — Matrix Multiply Accelerator</h2>
+        <p>
+          The accelerator offloads matrix multiplication to a dedicated hardware unit,
+          accessible to software via memory-mapped I/O registers. The CPU writes operand
+          addresses and dimensions to control registers, triggers execution, and polls a
+          status register for completion.
+        </p>
+
+        <h2>Results &amp; Takeaways</h2>
+        <p>
+          All RV32I instructions pass the official RISC-V compliance tests. The pipelined core
+          achieves a CPI of approximately 1.05 on typical integer benchmarks (accounting for
+          stalls). The accelerator demonstrates a 12× speedup on 64×64 matrix multiplication
+          versus pure software on the same core.
+        </p>
+        <p>
+          The biggest lesson: clean module boundaries and a consistent naming convention
+          make debugging Verilog dramatically easier. Waveform tracing through five pipeline
+          stages with cryptic signal names is an experience worth avoiding.
+        </p>
+
+        <h2>Repository</h2>
+        <p>
+          Source code, testbenches, and synthesis constraints are available on
+          <a href="https://github.com/YOUR_USERNAME/riscv-rv32i" target="_blank" rel="noopener" style="color:var(--accent);">GitHub →</a>
+        </p>
+
+      </article>
+
+      <!-- ── SIDEBAR ── -->
+      <aside class="post-sidebar">
+        <div class="sidebar-section">
+          <h4>Quick info</h4>
+          <p>Duration: ~6 months<br>Language: Verilog<br>Platform: Simulation + FPGA</p>
+        </div>
+        <div class="sidebar-section">
+          <h4>Tags</h4>
+          <div style="display:flex;flex-wrap:wrap;gap:0.35rem;">
+            <span class="tag">Verilog</span>
+            <span class="tag">RISC-V</span>
+            <span class="tag">RTL</span>
+            <span class="tag">Pipeline</span>
+            <span class="tag">FPGA</span>
+            <span class="tag">Computer Architecture</span>
+          </div>
+        </div>
+        <div class="sidebar-section sidebar-toc">
+          <h4>Contents</h4>
+          <a href="#overview" class="active">Overview</a>
+          <a href="#phase-1">Phase 1 — Single-cycle</a>
+          <a href="#phase-2">Phase 2 — Pipeline</a>
+          <a href="#phase-3">Phase 3 — Accelerator</a>
+          <a href="#results">Results</a>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<script src="/js/nav.js"></script>
+<script>
+  // Highlight active TOC section on scroll
+  const headings = document.querySelectorAll('.post-content h2');
+  const tocLinks = document.querySelectorAll('.sidebar-toc a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active'));
+        const active = [...tocLinks].find(l =>
+          l.getAttribute('href') === '#' + e.target.id
+        );
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  headings.forEach(h => { if (!h.id) h.id = h.textContent.toLowerCase().replace(/\s+/g,'-').replace(/[^\w-]/g,''); observer.observe(h); });
+</script>
+</body>
+</html>

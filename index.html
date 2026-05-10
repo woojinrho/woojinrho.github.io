@@ -1,12 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" contests="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Woojin — Portfolio</title>
+  <meta name="description" content="Woojin's personal portfolio — EE student at UC San Diego, RTL/digital design engineer." />
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-  <h1>Hello World!</h1>
-  <p>This is m yfirst Gitbub Pages site!</p>
+
+<!-- Nav injected by nav.js -->
+
+<main class="page-content">
+
+  <!-- ── HERO ── -->
+  <section class="home-hero container">
+    <div class="home-hero-text">
+      <p class="greeting">// Hello, world</p>
+      <h1>I'm <em>Woojin</em>,<br>an Engineer.</h1>
+      <p class="subtitle">EE · UC San Diego · RTL &amp; Digital Design</p>
+      <p>
+        Undergraduate student at UCSD specialising in digital &amp; RTL design.
+        Currently on a leave of absence for mandatory military service in Korea,
+        building side projects in Verilog/VHDL, FPGA, and computer architecture.
+      </p>
+      <div class="btn-group">
+        <a class="btn btn-primary" href="/projects.html">View Projects</a>
+        <a class="btn btn-outline" href="/cv.html">Download CV</a>
+      </div>
+    </div>
+
+    <div class="home-hero-img">
+      <div class="photo-frame">
+        <!-- Replace src with your actual photo path -->
+        <!-- <img src="/assets/photo.jpg" alt="Woojin" /> -->
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+          <span>your photo here</span>
+        </div>
+        <div class="photo-badge">UCSD · EE · '2X</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ── -->
+  <section class="home-section container">
+    <div class="home-section-header">
+      <h2>What I work with</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon">{}</div>
+        <h3>RTL / Digital Design</h3>
+        <p>Verilog, SystemVerilog, VHDL. Designed a full RV32I single-cycle RISC-V core and pipelined extensions.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚡</div>
+        <h3>Circuit Analysis</h3>
+        <p>Thévenin/Norton equivalents, node-voltage &amp; mesh methods, op-amp circuits, AC analysis &amp; phasors.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">∑</div>
+        <h3>Mathematics</h3>
+        <p>Multivariable calculus, linear algebra, vector fields, parametric geometry, and rotation transformations.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">◻</div>
+        <h3>FPGA &amp; Synthesis</h3>
+        <p>Targeting Xilinx/Intel platforms with constraint files, timing analysis, and hardware-software co-design.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">&lt;/&gt;</div>
+        <h3>Software</h3>
+        <p>C/C++, Python for scripting and verification. Git version control and Linux environment workflows.</p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">▦</div>
+        <h3>Computer Architecture</h3>
+        <p>ISA design, instruction pipelines, hazard detection/forwarding, memory hierarchy, and cache design.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURED PROJECTS ── -->
+  <section class="home-section container">
+    <div class="home-section-header">
+      <h2>Featured Projects</h2>
+      <a href="/projects.html">All projects →</a>
+    </div>
+    <div class="featured-grid">
+      <a class="featured-card" href="/projects/riscv-processor.html">
+        <div class="featured-thumb" style="background:#F1EDE8; display:flex; align-items:center; justify-content:center; color:#A8A49E; font-family:var(--font-mono); font-size:0.6rem;">RV32I</div>
+        <div class="featured-body">
+          <h3>RISC-V RV32I Processor (Verilog)</h3>
+          <p>Full single-cycle + pipelined implementation of the RISC-V RV32I ISA, with planned matrix-multiply accelerator.</p>
+          <div class="tags">
+            <span class="tag">Verilog</span>
+            <span class="tag">RISC-V</span>
+            <span class="tag">RTL</span>
+          </div>
+        </div>
+      </a>
+      <a class="featured-card" href="/projects/matrix-accelerator.html">
+        <div class="featured-thumb" style="background:#F1EDE8; display:flex; align-items:center; justify-content:center; color:#A8A49E; font-family:var(--font-mono); font-size:0.6rem;">MMUL</div>
+        <div class="featured-body">
+          <h3>Matrix Multiply Accelerator</h3>
+          <p>Custom hardware accelerator for matrix multiplication, tightly coupled to the RISC-V core via memory-mapped I/O.</p>
+          <div class="tags">
+            <span class="tag">SystemVerilog</span>
+            <span class="tag">FPGA</span>
+            <span class="tag">HW Accel</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── ABOUT SNIPPET ── -->
+  <section class="home-section container">
+    <div class="home-section-header">
+      <h2>About me</h2>
+      <a href="/cv.html">Full CV →</a>
+    </div>
+    <p style="max-width:620px; color:var(--ink-soft); font-size:0.97rem; line-height:1.8;">
+      I'm an Electrical Engineering student at UC San Diego, currently completing mandatory military service in South Korea.
+      My interests sit at the intersection of computer architecture, digital design, and low-level systems.
+      I love understanding <em>why</em> things work the way they do — not just how to apply them.
+      Outside of engineering, I enjoy writing, long walks along the Han River, and building things from scratch.
+    </p>
+  </section>
+
+</main>
+
+<script src="/js/nav.js"></script>
 </body>
 </html>
