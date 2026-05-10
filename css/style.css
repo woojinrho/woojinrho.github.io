@@ -33,6 +33,82 @@
   --t-med:  280ms;
 }
 
+/* ---- DARK MODE ---- */
+[data-theme="dark"] {
+  --bg:        #141210;
+  --bg-card:   #1E1B18;
+  --ink:        #EDE8E2;
+  --ink-soft:   #A09890;
+  --ink-faint:  #5A5450;
+  --accent:     #D4784A;        /* brighter terracotta for dark bg */
+  --accent-lt:  #2E1D12;
+  --rule:       #2A2620;
+  --mono-bg:    #1A1714;
+}
+
+/* Smooth color transitions when switching themes */
+body,
+header,
+.mobile-nav,
+.skill-card,
+.featured-card,
+.blog-card,
+.entry-img,
+.post-cover,
+.post-content pre,
+.photo-frame,
+.cv-photo,
+footer {
+  transition:
+    background-color 0.35s var(--ease),
+    border-color     0.35s var(--ease),
+    color            0.35s var(--ease);
+}
+
+/* ---- THEME TOGGLE BUTTON ---- */
+.theme-toggle {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--rule);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition:
+    border-color var(--t-med) var(--ease),
+    background   var(--t-med) var(--ease),
+    transform    var(--t-med) var(--ease);
+  overflow: hidden;
+}
+.theme-toggle:hover {
+  border-color: var(--accent);
+  background: var(--accent-lt);
+  transform: scale(1.08);
+}
+
+/* Sun and moon icons sit in the same spot; one fades/rotates out */
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  transition:
+    opacity   0.3s var(--ease),
+    transform 0.45s var(--ease);
+}
+
+/* Light mode: show sun, hide moon */
+.theme-toggle .icon-sun  { opacity: 1; transform: rotate(0deg)   scale(1);    }
+.theme-toggle .icon-moon { opacity: 0; transform: rotate(-90deg) scale(0.5);  }
+
+/* Dark mode: hide sun, show moon */
+[data-theme="dark"] .theme-toggle .icon-sun  { opacity: 0; transform: rotate(90deg)  scale(0.5); }
+[data-theme="dark"] .theme-toggle .icon-moon { opacity: 1; transform: rotate(0deg)   scale(1);   }
+
 html { font-size: 16px; scroll-behavior: smooth; }
 
 body {
