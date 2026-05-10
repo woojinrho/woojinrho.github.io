@@ -1,5 +1,5 @@
 // ── nav.js: inject shared header + footer, highlight active link, theme toggle ──
-
+//test
 (function() {
   const pages = [
     { href: '/index.html',    label: 'Home'     },
