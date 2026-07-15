@@ -33,57 +33,55 @@
     </div>
 
     <!-- ── CONTENT ── -->
-    <div class="post-layout">
-      <article class="post-content post-content--wide">
+    <article class="post-content post-content--wide">
 
-        <p>
-          Test1.
-        </p>
-        <p>
-          Test2.
-        </p>
+      <p>
+        Test1.
+      </p>
+      <p>
+        Test2.
+      </p>
 
-        <h2>The abstraction gap</h2>
-        <p>
-          Modern software engineering is all about abstractions. Frameworks hide databases,
-          databases hide filesystems, filesystems hide disk controllers. Most of the time,
-          that's great — it lets you move fast. But abstractions have a cost: you stop
-          understanding what's actually happening.
-        </p>
-        <p>
-          Building a processor forces you to close the abstraction gap. When you write
-          <code>lw x5, 0(x10)</code> and trace what actually happens — the fetch, decode,
-          address calculation, memory read, writeback — you never look at memory access
-          the same way again.
-        </p>
+      <h2>The abstraction gap</h2>
+      <p>
+        Modern software engineering is all about abstractions. Frameworks hide databases,
+        databases hide filesystems, filesystems hide disk controllers. Most of the time,
+        that's great — it lets you move fast. But abstractions have a cost: you stop
+        understanding what's actually happening.
+      </p>
+      <p>
+        Building a processor forces you to close the abstraction gap. When you write
+        <code>lw x5, 0(x10)</code> and trace what actually happens — the fetch, decode,
+        address calculation, memory read, writeback — you never look at memory access
+        the same way again.
+      </p>
 
-        <h2>Debugging as a skill</h2>
-        <p>
-          Verilog is humbling. A waveform viewer showing five simultaneous pipeline stages,
-          a stale value propagating through a forwarding mux, a hazard you forgot to detect —
-          debugging hardware is a different skill from debugging software.
-        </p>
-        <blockquote>
-          You can't put a print statement in hardware. You have to think before you simulate.
-        </blockquote>
-        <p>
-          That discipline — thinking through state transitions before touching the keyboard —
-          transfers everywhere. I'm slower to write code now. And faster to get it right.
-        </p>
+      <h2>Debugging as a skill</h2>
+      <p>
+        Verilog is humbling. A waveform viewer showing five simultaneous pipeline stages,
+        a stale value propagating through a forwarding mux, a hazard you forgot to detect —
+        debugging hardware is a different skill from debugging software.
+      </p>
+      <blockquote>
+        You can't put a print statement in hardware. You have to think before you simulate.
+      </blockquote>
+      <p>
+        That discipline — thinking through state transitions before touching the keyboard —
+        transfers everywhere. I'm slower to write code now. And faster to get it right.
+      </p>
 
-        <h2>The joy of it</h2>
-        <p>
-          Honestly, there's also just something deeply satisfying about it. The moment a
-          simulated processor successfully runs a Fibonacci sequence you wrote in assembly,
-          using a datapath you designed from scratch — that feeling doesn't go away.
-        </p>
-        <p>
-          Build the thing. All the way down.
-        </p>
+      <h2>The joy of it</h2>
+      <p>
+        Honestly, there's also just something deeply satisfying about it. The moment a
+        simulated processor successfully runs a Fibonacci sequence you wrote in assembly,
+        using a datapath you designed from scratch — that feeling doesn't go away.
+      </p>
+      <p>
+        Build the thing. All the way down.
+      </p>
 
-      </article>
+    </article>
 
-  </div>
 </main>
 
 <script src="/js/nav.js"></script>
