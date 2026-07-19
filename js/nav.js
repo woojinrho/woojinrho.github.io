@@ -1,5 +1,5 @@
 // ── nav.js: inject shared header + footer, highlight active link, theme toggle ──
-//test
+
 (function() {
   const pages = [
     { href: '/index.html',    label: 'Home'     },
@@ -10,8 +10,9 @@
   ];
 
   // ── Apply saved theme BEFORE paint to avoid flash ──
+  // Dark canvas is the site default; light is the toggled alternative
   const savedTheme = localStorage.getItem('theme') ||
-    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
   document.documentElement.setAttribute('data-theme', savedTheme);
 
   // Detect active page
